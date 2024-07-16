@@ -10,6 +10,8 @@ import { useRecoilState } from "recoil";
 import { SolanaConnect } from "./components/ConnectButton";
 import { useNavigate } from "react-router-dom";
 import { TransactionsCountErrorIcon } from "./components/Icons";
+
+import AnimatedBottle from './components/AnimateBottle'; //making changes here. to implement animation
 const App: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -99,7 +101,10 @@ const App: React.FC = () => {
 
       <div className="relative z-10 flex items-center justify-center h-full top-[-100px] lg:top-[-50px]">
         <div className="text-white text-center flex flex-col justify-between">
-          <img src={bottle} className="mx-auto w-[100px] h-auto" alt="bottle" />
+          {/* making change here */}
+          
+            <AnimatedBottle/>
+          
           <h1 className="text-[40px] lg:text-[80px] font-bold font-jbm uppercase">
             degen chat
           </h1>
