@@ -105,7 +105,7 @@ const App: React.FC = () => {
           
             <AnimatedBottle/>
           
-          <h1 className="text-[40px] lg:text-[80px] font-bold font-jbm uppercase">
+            <h1 className="text-[40px] lg:text-[80px] font-bold font-jbm uppercase">
             degen chat
           </h1>
           <p className="text-[15px] lg:text-[24px] uppercase font-jbm">
@@ -156,17 +156,18 @@ const App: React.FC = () => {
             <></>
           ) : (
             <button
-              className="bg-white coming-soon-shadow text-[#0000FF] uppercase font-jbm text-[15px] lg:text-[24px] p-2 lg:p-4 w-[90%] mx-auto mt-5 sm:w-full"
-              onClick={() => {
-                if (walletAddress) {
-                  return navigate("/chat");
-                } else {
-                  return setShowConnectWallet(true);
-                }
-              }}
-            >
-              connect n chat
-            </button>
+            className="bg-white coming-soon-shadow text-[#0000FF] uppercase font-jbm text-[15px] lg:text-[24px] p-2 lg:p-4 w-[90%] mx-auto mt-5 sm:w-full"
+            onClick={() => {
+              console.log("Wallet Address:", walletAddress);
+              if (walletAddress) {
+                return navigate("/chat");
+              } else {
+                return setShowConnectWallet(true);
+              }
+            }}
+          >
+            connect n chat
+          </button>
           )}
         </div>
       </div>
