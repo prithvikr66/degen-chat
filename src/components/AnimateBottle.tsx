@@ -7,7 +7,7 @@ const AnimatedBottle: React.FC = () => {
     <motion.div
       animate={{ y: [0, -10, 0] }}  // Move up and down by 10 pixels
       transition={{
-        duration: 1,  // Duration of the animation in seconds
+        duration:0.5,  // Duration of the animation in seconds
         repeat: Infinity,  // Repeat the animation infinitely
         repeatType: 'loop',  // Loop the animation
       }}
