@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import bgVideo from "./assets/bg1.mp4";
-import bottle from "./assets/bottle.png";
+import bgVideo from "./assets/newBgVideo.mp4";
+import bgVideoMobile from "./assets/newBgMobile.mp4"
 import winMusic from "./assets/win.mp3";
 import { IoVolumeMuteOutline } from "react-icons/io5";
 import { VscUnmute } from "react-icons/vsc";
@@ -57,13 +57,24 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen ">
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover object-center "
-        src={bgVideo}
-        autoPlay
-        loop
-        muted
-      />
+      <div className="lg:hidden block">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+          src={bgVideoMobile}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
+      <div className="hidden lg:block">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
       <div>
         <audio ref={audioRef} loop>
           <source src={winMusic} type="audio/mpeg" />
