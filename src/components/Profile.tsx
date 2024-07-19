@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { userNameState, userProfilePicState } from "../atoms/users";
 import { MdDriveFolderUpload } from "react-icons/md";
+import profileIcon from "../assets/profile.png";
 
-const BASE_URI = "https://prithvikr.live";
+const BASE_URI = import.meta.env.VITE_BASE_URI;
+
 
 const Profile = () => {
   const websiteTheme = useRecoilValue(websiteThemeState);
@@ -63,6 +65,7 @@ const Profile = () => {
     if (!profilePic) {
       return;
     }
+  
 
     const formData = new FormData();
     formData.append("profilePic", profilePic);
@@ -88,16 +91,13 @@ const Profile = () => {
   };
 
   const renderProfilePic = () => {
-    if (profilePic) {
-      try {
-        return URL.createObjectURL(profilePic);
-      } catch {
-        return profilePic;
-      }
-    } else {
+    if (!profilePic) {
+        return profileIcon;
+    } else if (profilePicFromS3) {
       return profilePicFromS3;
     }
   };
+
   return (
     <div
       style={{

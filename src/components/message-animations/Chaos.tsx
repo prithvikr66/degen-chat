@@ -55,7 +55,7 @@ const Chaos = ({
           setMessages((prevMessages) =>
             prevMessages.filter((msg) => msg._id !== latestMessage._id)
           );
-        }, 3000 + Math.random() * 1000);
+        }, 30000 + Math.random() * 1000);
       }
     }
   }, [newMessage, width, height]);
