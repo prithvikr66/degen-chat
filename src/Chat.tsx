@@ -184,6 +184,15 @@ const Chat = () => {
     };
   }, []);
 
+  const buttonClass = `p-[12px] lg:p-[16px] ${
+    websiteTheme.bgColor === "#ffffff"
+      ? "border border-black"
+      : "border-none"
+  } bg-white rounded-[6px] lg:rounded-[8px] flex items-center justify-center w-[50px] lg:w-[60px] h-[50px] lg:h-[60px]`;
+  
+  const iconClass = `w-[20px] lg:w-[25px] h-[20px] lg:h-[25px]`;
+  
+
   const RenderComponent = () => {
     switch (chatState) {
       case "DEN":
@@ -614,7 +623,7 @@ const Chat = () => {
                         <div className="lg:hidden flex flex-col gap-[15px] mt-[15px] w-full">
                           <button
                             onClick={() => navigate("/profile")}
-                            className=" uppercase font-jbm  p-[5px]   "
+                            className=" uppercase font-jbm  p-[5px]"
                             style={{
                               background:
                                 websiteTheme.bgColor === "#ffffff"
@@ -670,54 +679,34 @@ const Chat = () => {
                 )}
               </AnimatePresence>
               <motion.button
-                whileTap={clickAnimation}
-                className={`p-[10px] lg:p-[15px] ${
-                  websiteTheme.bgColor === "#ffffff"
-                    ? "border border-black"
-                    : "border-none"
-                } bg-white rounded-[4px] lg:rounded-[8px] hidden lg:block`}
-                onClick={handleSendMessage}
-              >
-                <AiOutlineSend
-                  className={`w-[22px] lg:w-[35px] h-auto `}
-                  style={{
-                    color: websiteTheme.buttonColor,
-                  }}
-                />
-              </motion.button>
-              {!isSettingsOpen && (
-                <motion.button
-                  whileTap={clickAnimation}
-                  className={`p-[10px] lg:p-[15px] ${
-                    websiteTheme.bgColor === "#ffffff"
-                      ? "border border-black"
-                      : "border-none"
-                  } bg-white rounded-[4px] lg:rounded-[8px] lg:hidden`}
-                  onClick={handleSendMessage}
-                >
-                  <AiOutlineSend
-                    className={`w-[22px] lg:w-[35px] h-auto `}
-                    style={{
-                      color: websiteTheme.buttonColor,
-                    }}
-                  />
-                </motion.button>
-              )}
-              <motion.button
-                whileTap={clickAnimation}
-                className={`p-[10px] lg:p-[15px] ${
-                  websiteTheme.bgColor === "#ffffff"
-                    ? "border border-black"
-                    : "border-none"
-                } bg-white rounded-[4px] lg:rounded-[8px] hidden lg:block`}
-                onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-              >
-                {isSettingsOpen ? (
-                  <SettingsClosed color={websiteTheme.buttonColor} />
-                ) : (
-                  <SettingsIcon color={websiteTheme.buttonColor} />
-                )}
-              </motion.button>
+      whileTap={clickAnimation}
+      className={`${buttonClass} hidden lg:block`}
+      onClick={handleSendMessage}
+    >
+      <AiOutlineSend className={iconClass} style={{ color: websiteTheme.buttonColor }} />
+    </motion.button>
+
+    {!isSettingsOpen && (
+      <motion.button
+        whileTap={clickAnimation}
+        className={`${buttonClass} lg:hidden`}
+        onClick={handleSendMessage}
+      >
+        <AiOutlineSend className={iconClass} style={{ color: websiteTheme.buttonColor }} />
+      </motion.button>
+    )}
+
+    <motion.button
+      whileTap={clickAnimation}
+      className={`${buttonClass} hidden lg:block`}
+      onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+    >
+      {isSettingsOpen ? (
+        <SettingsClosed color={websiteTheme.buttonColor} />
+      ) : (
+        <SettingsIcon color={websiteTheme.buttonColor} />
+      )}
+    </motion.button>
             </div>
           </>
         );
