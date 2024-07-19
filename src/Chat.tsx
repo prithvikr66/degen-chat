@@ -197,7 +197,7 @@ const Chat = () => {
             </div>
 
             {/* -------------------------------------- */}
-            <div className="relative h-[70%] lg:h-[75%] overflow-y-auto mb-[10px]  w-full">
+            <div className="relative h-[70%] lg:h-[75%] overflow-y-auto mb-[10px] mt-[20px] w-full">
               {settingsModal.motion === "focused" ? (
                 initialMessages.length > 0 && (
                   <Focused
