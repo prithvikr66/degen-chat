@@ -745,8 +745,10 @@ const Chat = () => {
         />
       </div>
       {RenderComponent()}
+        <div className="pb-2 pt-2">
+        <Footer setChatState={setChatState} chatState={chatState} />
 
-      <Footer setChatState={setChatState} chatState={chatState} />
+        </div>
     </div>
   );
 };
