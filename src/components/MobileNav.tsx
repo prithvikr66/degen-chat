@@ -29,13 +29,15 @@ const MobileNav = ({
   }, []);
 
   return (
-    <div className="mt-[20px] mb-[20px] lg:hidden w-[90%] mx-auto flex justify-between items-center sticky ">
+    <div className="mt-[20px] mb-[20px] w-[90%] mx-auto flex justify-between items-center sticky">
       <div className="flex items-center ml-[80px]">
-      <Link to="/">
-      <img src={bottle} alt="Logo" className="h-[17] w-[36px]" />
-      </Link>
+       
       </div>
-      <div className="flex items-center gap-[10px]">
+      <div className="flex items-center gap-[10px] hidden lg:flex">
+        <div className="h-[10px] w-[10px] bg-[#00FF00] rounded-full"></div>
+        <p>{liveUsersCount} Online</p>
+      </div>
+      <div className="flex items-center gap-[10px] lg:hidden">
         <div className="h-[10px] w-[10px] bg-[#00FF00] rounded-full"></div>
         <p>{liveUsersCount} Online</p>
       </div>
@@ -43,7 +45,7 @@ const MobileNav = ({
         <motion.button
           whileTap={clickAnimation}
           style={{ borderColor: websiteTheme.textColor }}
-          className="p-[5px] rounded-[4px] lg:rounded-[8px] lg:hidden border-[1px]"
+          className="p-[5px] rounded-[4px] lg:rounded-[8px] border-[1px]"
           onClick={() => setIsSettingsOpen(!isSettingsOpen)}
         >
           {isSettingsOpen ? (
@@ -58,3 +60,4 @@ const MobileNav = ({
 };
 
 export default MobileNav;
+
