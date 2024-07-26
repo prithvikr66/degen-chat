@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import bgVideo from "./assets/bg1.mp4";
-import bottle from "./assets/bottle.png";
+import bgVideo from "./assets/newBgVideo.mp4";
+import bgVideoMobile from "./assets/newBgMobile.mp4"
 import winMusic from "./assets/win.mp3";
 import { IoVolumeMuteOutline } from "react-icons/io5";
 import { VscUnmute } from "react-icons/vsc";
@@ -10,6 +10,8 @@ import { useRecoilState } from "recoil";
 import { SolanaConnect } from "./components/ConnectButton";
 import { useNavigate } from "react-router-dom";
 import { TransactionsCountErrorIcon } from "./components/Icons";
+
+import AnimatedBottle from './components/AnimateBottle'; //making changes here. to implement animation
 const App: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -55,13 +57,24 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen ">
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover object-center "
-        src={bgVideo}
-        autoPlay
-        loop
-        muted
-      />
+      <div className="lg:hidden block">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+          src={bgVideoMobile}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
+      <div className="hidden lg:block">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover object-center"
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+        />
+      </div>
       <div>
         <audio ref={audioRef} loop>
           <source src={winMusic} type="audio/mpeg" />
@@ -99,8 +112,11 @@ const App: React.FC = () => {
 
       <div className="relative z-10 flex items-center justify-center h-full top-[-100px] lg:top-[-50px]">
         <div className="text-white text-center flex flex-col justify-between">
-          <img src={bottle} className="mx-auto w-[100px] h-auto" alt="bottle" />
-          <h1 className="text-[40px] lg:text-[80px] font-bold font-jbm uppercase">
+          {/* making change here */}
+          
+            <AnimatedBottle/>
+          
+            <h1 className="text-[40px] lg:text-[80px] font-bold font-jbm uppercase">
             degen chat
           </h1>
           <p className="text-[15px] lg:text-[24px] uppercase font-jbm">
@@ -151,17 +167,18 @@ const App: React.FC = () => {
             <></>
           ) : (
             <button
-              className="bg-white coming-soon-shadow text-[#0000FF] uppercase font-jbm text-[15px] lg:text-[24px] p-2 lg:p-4 w-[90%] mx-auto mt-5 sm:w-full"
-              onClick={() => {
-                if (walletAddress) {
-                  return navigate("/chat");
-                } else {
-                  return setShowConnectWallet(true);
-                }
-              }}
-            >
-              connect n chat
-            </button>
+            className="bg-white coming-soon-shadow text-[#0000FF] uppercase font-jbm text-[15px] lg:text-[24px] p-2 lg:p-4 w-[90%] mx-auto mt-5 sm:w-full"
+            onClick={() => {
+              console.log("Wallet Address:", walletAddress);
+              if (walletAddress) {
+                return navigate("/chat");
+              } else {
+                return setShowConnectWallet(true);
+              }
+            }}
+          >
+            connect n chat
+          </button>
           )}
         </div>
       </div>
